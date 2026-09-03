@@ -36,7 +36,7 @@ describe('Streamable HTTP runtime', () => {
     ).resolves.toEqual({
       status: 'ok',
       server: '@obsidiancorps/umami-mcp',
-      version: '0.1.1',
+      version: '0.1.2',
       targetUmamiVersion: '3.3.1',
     });
 

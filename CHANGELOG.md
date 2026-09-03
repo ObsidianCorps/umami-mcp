@@ -4,6 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-09-03
+
+### Fixed
+
+- Match the case-sensitive MCP Registry namespace to the canonical `ObsidianCorps` GitHub organization name.
+- Allow the release workflow to be retried manually after correcting registry metadata.
+
 ## [0.1.1] - 2026-09-03
 
 ### Fixed
@@ -26,6 +33,7 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Multi-architecture GHCR publishing with provenance and an SBOM.
 - Automated npm and official MCP Registry release publishing.
 
-[Unreleased]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/obsidiancorps/umami-mcp/releases/tag/v0.1.0
