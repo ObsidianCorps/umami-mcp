@@ -4,6 +4,13 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-03
+
+### Fixed
+
+- Resolve npm executable symlinks before CLI entrypoint detection so `npx` starts the MCP server correctly.
+- Skip an npm version that is already public when retrying the release workflow, allowing registry publication to continue safely.
+
 ## [0.1.0] - 2026-09-03
 
 ### Added
@@ -19,5 +26,6 @@ All notable changes will be documented here. The format follows [Keep a Changelo
 - Multi-architecture GHCR publishing with provenance and an SBOM.
 - Automated npm and official MCP Registry release publishing.
 
-[Unreleased]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/obsidiancorps/umami-mcp/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/obsidiancorps/umami-mcp/releases/tag/v0.1.0

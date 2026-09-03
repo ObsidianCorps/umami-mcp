@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { pathToFileURL } from 'node:url';
+import { realpathSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 
 import { serveStdio } from '@modelcontextprotocol/server/stdio';
 
@@ -51,8 +52,8 @@ export async function main(env: Record<string, string | undefined> = process.env
   process.once('SIGTERM', shutdown);
 }
 
-const entrypoint = process.argv[1] ? pathToFileURL(process.argv[1]).href : undefined;
-if (entrypoint === import.meta.url) {
+const entrypoint = process.argv[1] ? realpathSync(process.argv[1]) : undefined;
+if (entrypoint === realpathSync(fileURLToPath(import.meta.url))) {
   main().catch((error: unknown) => {
     console.error(error instanceof Error ? error.message : String(error));
     process.exitCode = 1;

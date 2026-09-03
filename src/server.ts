@@ -7,7 +7,7 @@ import type { UmamiApi } from './umami/types.js';
 import { resolveWebsiteId } from './umami/website-resolver.js';
 
 const SERVER_NAME = '@obsidiancorps/umami-mcp';
-const SERVER_VERSION = '0.1.0';
+const SERVER_VERSION = '0.1.1';
 const TARGET_UMAMI_VERSION = '3.3.1';
 
 const outputSchema = z.object({

@@ -39,6 +39,8 @@ describe('build configuration', () => {
     expect(existsSync('.github/workflows/container.yml')).toBe(true);
 
     const releaseWorkflow = readFileSync('.github/workflows/release.yml', 'utf8');
+    expect(releaseWorkflow).toContain('npm view "${package_name}@${package_version}" version');
+    expect(releaseWorkflow).toContain("if: steps.npm-version.outputs.published != 'true'");
     expect(releaseWorkflow).toContain('mcp-publisher login github-oidc');
     expect(releaseWorkflow).toContain('mcp-publisher publish');
   });
