@@ -1,0 +1,41 @@
+name: Bug report
+description: Report reproducible incorrect behavior without including private analytics data.
+title: 'bug: '
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Never include Umami credentials, raw production events, session properties, or replay payloads.
+  - type: input
+    id: version
+    attributes:
+      label: MCP server version
+    validations:
+      required: true
+  - type: input
+    id: umami
+    attributes:
+      label: Umami version and deployment
+      description: For example, self-hosted v3.3.1 or Umami Cloud.
+    validations:
+      required: true
+  - type: dropdown
+    id: transport
+    attributes:
+      label: Transport
+      options: [stdio, streamable-http]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Use synthetic IDs and sanitized responses.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
