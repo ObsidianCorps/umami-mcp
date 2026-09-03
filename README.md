@@ -12,8 +12,6 @@ A secure, model-friendly [Model Context Protocol](https://modelcontextprotocol.i
 
 Requirements: Node.js 20 or newer and one configured [authentication mode](#authentication).
 
-> Release candidate: the npm command below becomes available when `v0.1.0` is published. Until then, use the [source installation](#from-source).
-
 ```bash
 npx -y @obsidiancorps/umami-mcp
 ```
