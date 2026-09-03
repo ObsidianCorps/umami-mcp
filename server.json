@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.obsidiancorps/umami-mcp",
+  "name": "io.github.ObsidianCorps/umami-mcp",
   "title": "ObsidianCorps Umami Analytics",
   "description": "Umami v3 MCP for Cloud or self-hosted analytics, with read-only, privacy-conscious defaults.",
   "repository": {

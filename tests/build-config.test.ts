@@ -21,6 +21,7 @@ describe('build configuration', () => {
 
   it('documents Cloud and self-hosted authentication in registry metadata', () => {
     const manifest = JSON.parse(readFileSync('server.json', 'utf8')) as {
+      name: string;
       packages: Array<{ environmentVariables: Array<{ name: string; isRequired: boolean }> }>;
     };
     const variables = manifest.packages[0]?.environmentVariables ?? [];
@@ -35,10 +36,26 @@ describe('build configuration', () => {
     expect(variables.every(({ isRequired }) => isRequired === false)).toBe(true);
   });
 
+  it('uses the exact case-sensitive GitHub organization namespace everywhere', () => {
+    const packageJson = JSON.parse(readFileSync('package.json', 'utf8')) as { mcpName: string };
+    const manifest = JSON.parse(readFileSync('server.json', 'utf8')) as { name: string };
+
+    expect(packageJson.mcpName).toBe('io.github.ObsidianCorps/umami-mcp');
+    expect(manifest.name).toBe('io.github.ObsidianCorps/umami-mcp');
+    expect(readFileSync('README.md', 'utf8')).toContain(
+      '<!-- mcp-name: io.github.ObsidianCorps/umami-mcp -->',
+    );
+    expect(readFileSync('Dockerfile', 'utf8')).toContain(
+      'io.modelcontextprotocol.server.name="io.github.ObsidianCorps/umami-mcp"',
+    );
+  });
+
   it('ships automated container and MCP Registry publication workflows', () => {
     expect(existsSync('.github/workflows/container.yml')).toBe(true);
 
     const releaseWorkflow = readFileSync('.github/workflows/release.yml', 'utf8');
+    expect(releaseWorkflow).toContain('workflow_dispatch:');
+    expect(releaseWorkflow).toContain("if: github.event_name == 'release'");
     expect(releaseWorkflow).toContain('npm view "${package_name}@${package_version}" version');
     expect(releaseWorkflow).toContain("if: steps.npm-version.outputs.published != 'true'");
     expect(releaseWorkflow).toContain('mcp-publisher login github-oidc');

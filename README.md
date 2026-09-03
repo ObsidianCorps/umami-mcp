@@ -1,6 +1,6 @@
 # ObsidianCorps Umami MCP
 
-<!-- mcp-name: io.github.obsidiancorps/umami-mcp -->
+<!-- mcp-name: io.github.ObsidianCorps/umami-mcp -->
 
 **Ask questions about your self-hosted Umami analytics without sending the data to another analytics SaaS.**
 

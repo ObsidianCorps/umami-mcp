@@ -14,7 +14,7 @@ RUN npm ci --omit=dev --ignore-scripts
 FROM node:24-alpine AS runtime
 LABEL org.opencontainers.image.source="https://github.com/obsidiancorps/umami-mcp"
 LABEL org.opencontainers.image.licenses="Apache-2.0"
-LABEL io.modelcontextprotocol.server.name="io.github.obsidiancorps/umami-mcp"
+LABEL io.modelcontextprotocol.server.name="io.github.ObsidianCorps/umami-mcp"
 ENV NODE_ENV=production \
     MCP_TRANSPORT=http \
     MCP_HOST=0.0.0.0 \

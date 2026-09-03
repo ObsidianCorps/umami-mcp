@@ -1,6 +1,6 @@
 {
   "name": "@obsidiancorps/umami-mcp",
-  "mcpName": "io.github.obsidiancorps/umami-mcp",
+  "mcpName": "io.github.ObsidianCorps/umami-mcp",
   "version": "0.1.1",
   "description": "A secure, model-friendly MCP server for Umami Analytics v3",
   "type": "module",
