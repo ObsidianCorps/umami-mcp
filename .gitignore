@@ -3,4 +3,5 @@ dist/
 coverage/
 .env
 *.log
+docs/assets/*.mp4
 .DS_Store

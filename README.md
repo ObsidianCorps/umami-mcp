@@ -2,9 +2,27 @@
 
 <!-- mcp-name: io.github.obsidiancorps/umami-mcp -->
 
-A secure, model-friendly [Model Context Protocol](https://modelcontextprotocol.io/) server for [Umami Analytics](https://umami.is/). It targets **Umami v3.3.1** and the **2026-07-28 MCP protocol**, while retaining compatibility with 2025-era MCP clients.
+**Ask questions about your self-hosted Umami analytics without sending the data to another analytics SaaS.**
 
-> Status: pre-release `0.1.0`. The repository is ready for local use and review; the `npx` command becomes available after the first npm publication.
+A secure, model-friendly [Model Context Protocol](https://modelcontextprotocol.io/) server for Umami Cloud and self-hosted [Umami Analytics](https://umami.is/). It targets **Umami v3.3.1** and the **2026-07-28 MCP protocol**, while retaining compatibility with 2025-era MCP clients.
+
+![Umami MCP answering three analytics questions](https://raw.githubusercontent.com/ObsidianCorps/umami-mcp/main/docs/assets/umami-mcp-demo.gif)
+
+## Install
+
+Requirements: Node.js 20 or newer and one configured [authentication mode](#authentication).
+
+> Release candidate: the npm command below becomes available when `v0.1.0` is published. Until then, use the [source installation](#from-source).
+
+```bash
+npx -y @obsidiancorps/umami-mcp
+```
+
+Try asking:
+
+- “Compare website traffic with last month.”
+- “Which sources generated the most conversions?”
+- “Find pages with poor Web Vitals.”
 
 ## Why this implementation
 
@@ -17,9 +35,9 @@ A secure, model-friendly [Model Context Protocol](https://modelcontextprotocol.i
 - Defense in depth: response byte limits, request timeouts, HTTPS enforcement, token refresh, DNS-rebinding protection, exact origin checks, and constant-time MCP bearer checks.
 - Cloud and self-hosted auth: Umami Cloud API keys, pre-issued self-hosted tokens, or lazy username/password login—including Umami v3.3+ two-factor verification—with a single refresh after `401`.
 
-## Quick start
+## Configure
 
-### From source today
+### From source
 
 Requirements: Node.js 20 or newer.
 
@@ -27,12 +45,6 @@ Requirements: Node.js 20 or newer.
 npm install
 npm run build
 UMAMI_API_KEY=your-key node dist/cli.js
-```
-
-### From npm after publication
-
-```bash
-UMAMI_API_KEY=your-key npx -y @obsidiancorps/umami-mcp
 ```
 
 Example MCP client configuration:
@@ -52,7 +64,7 @@ Example MCP client configuration:
 }
 ```
 
-For an unpublished checkout, replace the command with `node` and the arguments with the absolute path to `dist/cli.js`.
+For a source checkout, replace the command with `node` and the arguments with the absolute path to `dist/cli.js`.
 
 ## Authentication
 

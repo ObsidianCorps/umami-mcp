@@ -4,7 +4,12 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY tsconfig.json tsdown.config.ts ./
 COPY src ./src
-RUN npm run build && npm prune --omit=dev
+RUN npm run build
+
+FROM node:24-alpine AS dependencies
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev --ignore-scripts
 
 FROM node:24-alpine AS runtime
 LABEL org.opencontainers.image.source="https://github.com/obsidiancorps/umami-mcp"
@@ -16,7 +21,7 @@ ENV NODE_ENV=production \
     MCP_PORT=3000
 WORKDIR /app
 COPY --from=build --chown=node:node /app/package.json ./
-COPY --from=build --chown=node:node /app/node_modules ./node_modules
+COPY --from=dependencies --chown=node:node /app/node_modules ./node_modules
 COPY --from=build --chown=node:node /app/dist ./dist
 USER node
 EXPOSE 3000

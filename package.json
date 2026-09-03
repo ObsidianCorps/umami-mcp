@@ -24,6 +24,7 @@
   "scripts": {
     "build": "tsdown",
     "check": "npm run verify && npm run build",
+    "demo:render": "remotion render demo/index.ts UmamiMcpDemo docs/assets/umami-mcp-demo.mp4 --codec h264 --crf 18",
     "dev": "tsx src/cli.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -32,7 +33,7 @@
     "start": "node dist/cli.js",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p demo/tsconfig.json",
     "verify": "npm run typecheck && npm run lint && npm run format:check && npm test"
   },
   "keywords": [
@@ -60,9 +61,15 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@modelcontextprotocol/client": "^2.0.0",
+    "@remotion/cli": "^4.0.520",
     "@types/node": "^24.10.1",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
     "eslint": "^10.9.1",
     "prettier": "^3.9.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "remotion": "^4.0.520",
     "tsdown": "^0.22.14",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",

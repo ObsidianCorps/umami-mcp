@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "declaration": false,
+    "declarationMap": false,
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "outDir": "../dist-demo",
+    "types": ["node", "react"]
+  },
+  "include": ["./**/*.ts", "./**/*.tsx"]
+}

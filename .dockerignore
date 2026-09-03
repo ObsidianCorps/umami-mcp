@@ -2,6 +2,8 @@
 .github
 .env
 coverage
+demo
 dist
+docs
 node_modules
 *.log

@@ -18,11 +18,28 @@ jobs:
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org
-          cache: npm
+          package-manager-cache: false
       - run: npm ci
       - run: npm run check
       - name: Verify tag matches package version
         env:
           RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: node -e "const p=require('./package.json'); if (process.env.RELEASE_TAG !== 'v' + p.version) process.exit(1)"
-      - run: npm publish --access public --provenance
+      - name: Publish npm package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Install MCP Registry publisher
+        env:
+          MCP_PUBLISHER_VERSION: v1.8.1
+        run: |
+          curl --fail --location --silent --show-error \
+            --output mcp-publisher.tar.gz \
+            "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz"
+          tar -xzf mcp-publisher.tar.gz mcp-publisher
+      - name: Validate MCP Registry metadata
+        run: ./mcp-publisher validate server.json
+      - name: Authenticate to MCP Registry
+        run: ./mcp-publisher login github-oidc
+      - name: Publish to MCP Registry
+        run: ./mcp-publisher publish server.json

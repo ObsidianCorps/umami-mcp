@@ -8,7 +8,7 @@ export default tseslint.config(
     ignores: ['dist', 'coverage', 'eslint.config.mjs'],
   },
   {
-    files: ['**/*.ts'],
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
