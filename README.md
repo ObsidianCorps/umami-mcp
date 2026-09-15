@@ -22,6 +22,27 @@ Try asking:
 - “Which sources generated the most conversions?”
 - “Find pages with poor Web Vitals.”
 
+## Agent skill
+
+This repository also includes the [Umami Analytics skill](skills/umami-analytics/SKILL.md).
+The MCP server provides access to Umami; the skill guides an agent through traffic
+comparisons, conversion analysis, revenue, and performance investigations using those tools.
+It follows the [Agent Skills format](https://agentskills.io/specification).
+
+For MCP Market's **Import from GitHub**, use the skill folder URL:
+
+```text
+https://github.com/ObsidianCorps/umami-mcp/tree/main/skills/umami-analytics
+```
+
+The URL must point to the folder containing `SKILL.md`. For a public repository, select
+**Public repo**. The folder must be pushed to `main` before the marketplace can import it.
+
+For manual installation, copy `skills/umami-analytics` into your agent's skills directory
+(for example, `.claude/skills/umami-analytics` in a project). Configure and authenticate
+the [MCP server](#configure) separately; importing the skill does not install the server
+or grant access to analytics.
+
 ## Why this implementation
 
 - Current Umami v3 coverage: revenue APIs, session replay, heatmaps, event/session property pivots and typed series, segments, cohorts, boards, links, pixels, Web Vitals reports, and the established analytics APIs.
